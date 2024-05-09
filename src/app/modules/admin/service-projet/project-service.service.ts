@@ -8,10 +8,10 @@ import { ResponseCategory } from './response-category.model';
   providedIn: 'root'
 })
 export class ProjectServiceService {
-  private baseUrl: string = 'http://project-service:8080/api/v1/projets/'
-  private apiUrl1: string = 'http://project-service:8080/api/v1/projets/admin-accepted';
-  private apiUrl2: string = 'http://project-service:8080/api/v1/projets/admin-pending';
-  private catBaseUrl: string ='http://project-service:8080/api/v1/projets/category'
+  private baseUrl: string = 'http://project-service.app.svc.cluster.local:8080/api/v1/projets/'
+  private apiUrl1: string = 'http://project-service.app.svc.cluster.local:8080/api/v1/projets/admin-accepted';
+  private apiUrl2: string = 'http://project-service.app.svc.cluster.local:8080/api/v1/projets/admin-pending';
+  private catBaseUrl: string ='http://project-service.app.svc.cluster.local:8080/api/v1/projets/category'
 
 
   constructor(private http: HttpClient) {}
@@ -57,7 +57,7 @@ export class ProjectServiceService {
     return this.http.put(`${this.catBaseUrl}/${id}`, {}, { params });
   }
 
-  private statsUrl = 'http://project-service:8080/api/v1/projets/category/stats'; 
+  private statsUrl = 'http://project-service.app.svc.cluster.local:8080/api/v1/projets/category/stats'; 
   getCategoryStats(): Observable<any> {
     return this.http.get<any>(this.statsUrl);
   }
